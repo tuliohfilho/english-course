@@ -23,7 +23,6 @@ function Index() {
     const [player, setPlayer] = useState<HTMLAudioElement>(new Audio());
 
     const start = (url: any) => {
-        console.log('aqui')
         if (!toPlay)
             setPlayer(new Audio(url));
 
@@ -45,11 +44,10 @@ function Index() {
     }, []);
 
     useEffect(() => {
-        if (player)
-            if (toPlay)
-                player.play();
-            else
-                player.pause();
+        if (toPlay)
+            player.play();
+        else
+            player.pause();
     }, [toPlay])
 
     return (
