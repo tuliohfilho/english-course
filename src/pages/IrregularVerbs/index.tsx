@@ -43,13 +43,13 @@ function Index() {
             });
     }, []);
 
-    // useEffect(() => {
-    //     if (toPlay)
-    //         player.play();
-    //     else
-    //         player.pause();
-    // }, [toPlay])
-    
+    useEffect(() => {
+        if (player)
+            if (toPlay)
+                player.play();
+            else
+                player.pause();
+    }, [toPlay])
 
     return (
         <Container customClass="column">
