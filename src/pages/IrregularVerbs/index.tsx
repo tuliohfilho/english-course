@@ -44,11 +44,12 @@ function Index() {
     }, []);
 
     useEffect(() => {
-        if (player)
-            if (toPlay)
-                player.play();
-            else
-                player.pause();
+        if (toPlay)
+            player.play();
+        else
+            player.pause();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [toPlay])
 
     return (
