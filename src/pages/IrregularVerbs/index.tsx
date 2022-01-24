@@ -43,7 +43,7 @@ function Index() {
             });
     }, []);
 
-    useEffect(() => {
+    useEffect(() => { 
         if (toPlay)
             player.play();
         else
