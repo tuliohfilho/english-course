@@ -45,10 +45,11 @@ function Index() {
     }, []);
 
     useEffect(() => {
-        if (toPlay)
-            player.play();
-        else
-            player.pause();
+        if (player)
+            if (toPlay)
+                player.play();
+            else
+                player.pause();
     }, [toPlay])
 
     return (
