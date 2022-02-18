@@ -1,19 +1,16 @@
-import styles from "./Card.module.css";
+import { Wrapper, CustomType, ColorType } from "./styles";
 
 type Props = {
-  color?: string;
-  customClass?: string;
+  color?: ColorType;
+  customClass?: CustomType;
   children?: React.ReactNode;
 };
 
-function Card({ color, children, customClass }: Props) {
-  color = color || "blue";
-  customClass = customClass || "";
-
+function Card({ color = "blue", children, customClass }: Props) {
   return (
-    <div className={`${styles.card} ${styles[color]} ${styles[customClass]}`}>
+    <Wrapper color={color} customClass={customClass}>
       {children}
-    </div>
+    </Wrapper>
   );
 }
 
