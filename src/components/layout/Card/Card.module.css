@@ -1,31 +1,24 @@
 .card {
-    border-radius: 5px;
-    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
-    padding: 0 1em 1em 1em;
-    margin: 0 1em 1em 0;
-    width: 20%;
-    height: fit-content;
-    transition: all 0.3s ease-out;
+  border-radius: 5px;
+  box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+  padding: 0 1em 1em 1em;
+  margin: 0 1em 1em 0;
+  transition: all 0.3s ease-out;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    cursor: pointer;
-}
-
-.card .translation {
-    font-size: 1em;
-    color: #a3a5ae;
+  transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .blue {
-    border-left: 3px solid #4895ff;
+  border-left: 3px solid #4895ff;
 }
 
 .green {
-    border-left: 3px solid #3bb54a;
+  border-left: 3px solid #3bb54a;
 }
 
 .red {
-    border-left: 3px solid #b3404a;
+  border-left: 3px solid #b3404a;
 }

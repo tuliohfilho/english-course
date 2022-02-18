@@ -1,37 +1,36 @@
-import styles from '../Tips.module.css';
+import styles from "./PresentPerfect.module.css";
 
-import {
-    Card
-} from "../../../components/layout";
+import { Card } from "../../../components/layout";
 
 type Props = {
-    title: string,
-    data: Array<PresentPerfectItem>
+  title: string;
+  data: Array<PresentPerfectItem>;
 };
 
-const PresentPerfect = ({
-    data,
-    title,
-}: Props) => {
-    return (
-        <Card>
-            <div className={styles.card_content}>
-                <h2>{title}</h2>
+const PresentPerfect = ({ data, title }: Props) => {
+  return (
+    <div className={styles.card_content}>
+      <Card>
+        <div className={styles.title_container}>
+          <h2>{title}</h2>
+        </div>
+        <div className={styles.content}>
+          {data &&
+            data.map((item) => {
+              const { verb, subject, auxiliaryVerb } = item;
 
-                {data && data.map((item) => {
-                    const { verb, subject, auxiliaryVerb } = item;
-
-                    return (
-                        <p>
-                            <span>{subject}</span>
-                            <b><span>{auxiliaryVerb}</span></b>
-                            <span>{verb}</span>
-                        </p >
-                    )
-                })}
-            </div>
-        </Card>
-    )
-}
+              return (
+                <p>
+                  <span>{subject}</span>
+                  <b>{auxiliaryVerb}</b>
+                  <span>{verb}</span>
+                </p>
+              );
+            })}
+        </div>
+      </Card>
+    </div>
+  );
+};
 
 export default PresentPerfect;
