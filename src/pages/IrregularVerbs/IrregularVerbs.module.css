@@ -4,10 +4,16 @@
   flex-flow: row wrap;
 }
 
+.filter_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #a3a5ae; */
+  padding: 1em 1.5em 1em 0;
+}
 .filter_container input {
-  margin-bottom: 1em;
+  flex: 1;
   height: 40px;
-  width: 100%;
   font-size: 16px;
   padding-left: 5%;
   border-radius: 50px;
