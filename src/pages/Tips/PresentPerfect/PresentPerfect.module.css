@@ -14,12 +14,6 @@
   justify-content: center;
 }
 
-.content_container .content_space {
-  border: solid 3px gray;
-  margin: 1em 0.5em;
-  height: 100%;
-}
-
 .content p {
   display: flex;
   justify-content: space-between;

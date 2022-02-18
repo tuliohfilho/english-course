@@ -21,7 +21,7 @@ function IrregularVerbs({ data, start }: Props) {
 
   return (
     <div className={styles.card_container}>
-      <Card>
+      <Card customClass="max_width">
         <h2>{infinitve}</h2>
         <p className={styles.label}>
           <b>Simple Past</b>

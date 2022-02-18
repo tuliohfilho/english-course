@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.max_width {
+  width: 100%;
+}
+
 .blue {
   border-left: 3px solid #4895ff;
 }
