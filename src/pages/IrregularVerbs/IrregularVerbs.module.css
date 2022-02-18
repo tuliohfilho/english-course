@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #a3a5ae; */
   padding: 1em 1.5em 1em 0;
 }
 .filter_container input {
