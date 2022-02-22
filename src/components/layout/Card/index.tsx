@@ -6,12 +6,12 @@ type Props = {
   children?: React.ReactNode;
 };
 
-function Card({ color = "blue", children, customClass }: Props) {
+const Card = ({ color = "blue", children, customClass }: Props) => {
   return (
     <Wrapper color={color} customClass={customClass}>
       {children}
     </Wrapper>
   );
-}
+};
 
 export default Card;

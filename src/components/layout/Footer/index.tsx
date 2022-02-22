@@ -1,10 +1,10 @@
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
-import { List, Warpper } from "./styles";
+import { List, Wrapper } from "./styles";
 
-function Index() {
+const Footer = () => {
   return (
-    <Warpper>
+    <Wrapper>
       <List>
         <li>
           <FaFacebook />
@@ -16,8 +16,8 @@ function Index() {
           <FaLinkedin />
         </li>
       </List>
-    </Warpper>
+    </Wrapper>
   );
-}
+};
 
-export default Index;
+export default Footer;

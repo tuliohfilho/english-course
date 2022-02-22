@@ -1,12 +1,13 @@
-import styles from './Contact.module.css';
+import { Wrapper } from "./styles";
+
+import { Title } from "../../components/layout";
 
 function Contact() {
-    return (
-        <div className={styles.contact_container}>
-            <h1>Contato</h1>
-            <p>Contéudo da página</p>
-        </div>
-    )
+  return (
+    <Wrapper>
+      <Title title="Contact" subTitle="Contact content" />
+    </Wrapper>
+  );
 }
 
 export default Contact;

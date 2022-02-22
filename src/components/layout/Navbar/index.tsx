@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-import { Item, List, Logo, Warpper } from "./styles";
+import { Item, List, Logo, Wrapper } from "./styles";
 
 import logo from "../../../assets/svg/logo.svg";
 
-function Navbar() {
+const Navbar = () => {
   return (
-    <Warpper>
+    <Wrapper>
       <Link to="/">
         <Logo src={logo} alt="Teatch" />
       </Link>
@@ -24,8 +24,8 @@ function Navbar() {
           <Link to="/contact">Contact</Link>
         </Item>
       </List>
-    </Warpper>
+    </Wrapper>
   );
-}
+};
 
 export default Navbar;

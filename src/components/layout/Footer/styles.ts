@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Warpper = styled.footer`
+export const Wrapper = styled.footer`
   position: fixed;
   left: 0;
   bottom: 0;

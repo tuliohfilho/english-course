@@ -1,17 +1,17 @@
-import { SubTitle, Title, Wrapper } from "./styles";
+import { Content, Subtitle, Wrapper } from "./styles";
 
 type Props = {
   title?: string;
   subTitle?: string;
 };
 
-const Index = ({ title, subTitle }: Props) => {
+const Title = ({ title, subTitle }: Props) => {
   return (
     <Wrapper>
-      {title && <Title>{title}</Title>}
-      {subTitle && <SubTitle>{subTitle}</SubTitle>}
+      {title && <Content>{title}</Content>}
+      {subTitle && <Subtitle>{subTitle}</Subtitle>}
     </Wrapper>
   );
 };
 
-export default Index;
+export default Title;

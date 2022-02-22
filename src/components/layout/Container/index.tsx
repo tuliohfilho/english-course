@@ -5,8 +5,12 @@ type Props = {
   children?: React.ReactNode;
 };
 
-function Index({ children, customClass }: Props) {
-  return <Wrapper customClass={customClass}>{children}</Wrapper>;
-}
+const Container = ({ children, customClass, ...rest }: Props) => {
+  return (
+    <Wrapper {...rest} customClass={customClass}>
+      {children}
+    </Wrapper>
+  );
+};
 
-export default Index;
+export default Container;

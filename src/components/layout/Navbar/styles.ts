@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Warpper = styled.nav`
+export const Wrapper = styled.nav`
   z-index: 1;
   position: fixed;
   left: 0;
