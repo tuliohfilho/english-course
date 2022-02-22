@@ -1,24 +1,17 @@
-import { Container } from '..';
-
-import styles from './Title.module.css';
+import { SubTitle, Title, Wrapper } from "./styles";
 
 type Props = {
-    title?: string,
-    subTitle?: string
+  title?: string;
+  subTitle?: string;
 };
 
-const Index = ({
-    title,
-    subTitle
-}: Props) => {
-    return (
-        <Container>
-            <div className={styles.title_container}>
-                {title && <h1>{title}</h1>}
-                {subTitle && <p>{subTitle}</p>}
-            </div>
-        </Container>
-    )
-}
+const Index = ({ title, subTitle }: Props) => {
+  return (
+    <Wrapper>
+      {title && <Title>{title}</Title>}
+      {subTitle && <SubTitle>{subTitle}</SubTitle>}
+    </Wrapper>
+  );
+};
 
 export default Index;

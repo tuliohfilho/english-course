@@ -8,7 +8,7 @@ export enum colors {
 
 export type ColorType = keyof typeof colors;
 
-export type CustomType = "max_width" | "card";
+export type CustomType = "max_width";
 
 type props = { color: ColorType; customClass?: CustomType };
 
@@ -27,17 +27,7 @@ export const Wrapper = styled.div<props>`
       width: 100%;
     `}
 
-  ${({ customClass }) =>
-    customClass === "card" &&
-    css`
-      border-radius: 5px;
-      box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
-      padding: 0 1em 1em 1em;
-      margin: 0 1em 1em 0;
-      transition: all 0.3s ease-out;
-    `}
-
-    :hover {
+  :hover {
     transform: translateY(-5px);
     cursor: pointer;
   }

@@ -1,27 +1,14 @@
-import {
-  Route,
-  Routes,
-  BrowserRouter as Router
-} from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
-import {
-  Home,
-  Tips,
-  Contact,
-  IrregularVerbs
-} from './pages';
+import { Home, Tips, Contact, IrregularVerbs } from "./pages";
 
-import {
-  Navbar,
-  Footer,
-  Container
-} from './components/layout';
+import { Navbar, Footer, Container } from "./components/layout";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Container customClass="min_height">
+      <Container>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tips" element={<Tips />} />

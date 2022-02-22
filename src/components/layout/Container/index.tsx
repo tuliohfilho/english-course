@@ -1,20 +1,12 @@
-import styles from './Container.module.css';
+import { CustomType, Wrapper } from "./styles";
 
 type Props = {
-    customClass: string;
-    children?: React.ReactNode;
-}
+  customClass?: CustomType;
+  children?: React.ReactNode;
+};
 
 function Index({ children, customClass }: Props) {
-    return (
-        <div className={`${styles.container} ${styles[customClass]}`} >
-            {children}
-        </div>
-    )
+  return <Wrapper customClass={customClass}>{children}</Wrapper>;
 }
 
-Index.defaultProps = {
-    customClass: ''
-}
-
-export default Index
+export default Index;
