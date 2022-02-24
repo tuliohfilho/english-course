@@ -1,6 +1,6 @@
-import { Wrapper, CardContainer, Item } from "./styles";
+import { Wrapper, CardContainer, CardContent, Item } from "./styles";
 
-import { Card, Player } from "../../../components";
+import { Player } from "../../../components";
 
 type Props = {
   data: OnPronounciation;
@@ -28,10 +28,10 @@ const OnPronounciation = ({ data }: Props) => {
 
   const renderCardContent = (data: OnPronounciationItem[], title: string) => {
     return (
-      <Card>
+      <CardContent>
         <h2>{title}</h2>
         {data.map(renderItem)}
-      </Card>
+      </CardContent>
     );
   };
 

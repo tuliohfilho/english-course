@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+
+import { Card } from "../../../components";
 import { Container } from "../../../components/layout";
 
 export const Wrapper = styled(Container).attrs({
@@ -8,8 +10,6 @@ export const Wrapper = styled(Container).attrs({
 export const CardContainer = styled(Container).attrs({
   customClass: "start",
 })`
-  justify-content: space-around;
-
   h2 {
     display: flex;
     padding: 0 2em 0.5em 2em;
@@ -20,6 +20,10 @@ export const CardContainer = styled(Container).attrs({
   p {
     display: flex;
   }
+`;
+
+export const CardContent = styled(Card)`
+  width: 100%;
 `;
 
 type PropsItem = {
