@@ -1,6 +1,6 @@
-import Container from "../Container";
-
 import styled from "styled-components";
+
+import Container from "../layout/Container";
 
 export const Wrapper = styled(Container).attrs({
   customClass: "column",

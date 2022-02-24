@@ -1,10 +1,11 @@
 declare type PresentPerfect = {
-    longForm: Array<PresentPerfectItem>,
-    shortForm: Array<PresentPerfectItem>,
-}
+  longForm: Array<PresentPerfectItem>;
+  shortForm: Array<PresentPerfectItem>;
+};
 
 declare type PresentPerfectItem = {
-    verb: string,
-    subject: string,
-    auxiliaryVerb: string
-}
+  id: string;
+  verb: string;
+  subject: string;
+  auxiliaryVerb: string;
+};

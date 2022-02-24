@@ -1,53 +1,50 @@
-import styles from "./OnPronounciation.module.css";
+import { Wrapper, CardContainer, Item } from "./styles";
 
-import { Card } from "../../../components/layout";
-import { FaPlay } from "react-icons/fa";
+import { Card, Player } from "../../../components";
 
 type Props = {
-  title: string;
-  data: Array<OnPronounciationItem>;
-  start(url: any): void;
+  data: OnPronounciation;
 };
 
-const OnPronounciation = ({ data, title, start }: Props) => {
-  const player = (item: OnPronounciationItem) => {
-    const { audioName } = item;
-    let audio = require(`../../../assets/audios/onPronounciation/${audioName}`);
+const OnPronounciation = ({ data }: Props) => {
+  const { simplePresenteTense, simplePastTense } = data;
 
-    start(audio);
+  const renderItem = (item: OnPronounciationItem) => {
+    const { id, pronounciation, subject, auxiliaryVerb, audioName } = item;
+
+    return (
+      <p key={id}>
+        <Item maxWidth>
+          <b>{auxiliaryVerb}</b>
+        </Item>
+        <Item>+</Item>
+        <Item maxWidth>{subject}</Item>
+        <Item>=</Item>
+        <Item maxWidth>{pronounciation}</Item>
+        <Player context="onPronounciation" audioName={audioName} />
+      </p>
+    );
+  };
+
+  const renderCardContent = (data: OnPronounciationItem[], title: string) => {
+    return (
+      <Card>
+        <h2>{title}</h2>
+        {data.map(renderItem)}
+      </Card>
+    );
   };
 
   return (
-    <div className={styles.card_content}>
-      <Card>
-        <div className={styles.title_container}>
-          <h2>{title}</h2>
-        </div>
-
-        <div className={styles.content}>
-          {data &&
-            data.map((item) => {
-              const { pronounciation, subject, auxiliaryVerb } = item;
-
-              return (
-                <p>
-                  <b className={styles.item}>{auxiliaryVerb}</b>
-                  <span>+</span>
-                  <span className={styles.item}>{subject}</span>
-                  <span>=</span>
-                  <span className={styles.item}>{pronounciation}</span>
-                  <span>
-                    <FaPlay
-                      className={styles.svg}
-                      onClick={() => player(item)}
-                    />
-                  </span>
-                </p>
-              );
-            })}
-        </div>
-      </Card>
-    </div>
+    <Wrapper>
+      <h3>On Pronounciation</h3>
+      <CardContainer>
+        {simplePresenteTense &&
+          renderCardContent(simplePresenteTense, "Simple Present Tense")}
+        {simplePastTense &&
+          renderCardContent(simplePastTense, "Simple Past Tense")}
+      </CardContainer>
+    </Wrapper>
   );
 };
 

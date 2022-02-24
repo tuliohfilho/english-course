@@ -1,35 +1,44 @@
-import styles from "./PresentPerfect.module.css";
+import { CardContainer, Wrapper } from "./styles";
 
-import { Card } from "../../../components/layout";
+import { Card } from "../../../components";
 
 type Props = {
-  title: string;
-  data: Array<PresentPerfectItem>;
+  data: PresentPerfect;
 };
 
-const PresentPerfect = ({ data, title }: Props) => {
-  return (
-    <div className={styles.card_content}>
-      <Card>
-        <div className={styles.title_container}>
-          <h2>{title}</h2>
-        </div>
-        <div className={styles.content}>
-          {data &&
-            data.map((item) => {
-              const { verb, subject, auxiliaryVerb } = item;
+const PresentPerfect = ({ data }: Props) => {
+  const { longForm, shortForm } = data;
 
-              return (
-                <p>
-                  <span>{subject}</span>
-                  <b>{auxiliaryVerb}</b>
-                  <span>{verb}</span>
-                </p>
-              );
-            })}
-        </div>
+  const renderItem = (item: PresentPerfectItem) => {
+    const { id, verb, subject, auxiliaryVerb } = item;
+
+    return (
+      <p key={id}>
+        <span>{subject}</span>
+        <b>{auxiliaryVerb}</b>
+        <span>{verb}</span>
+      </p>
+    );
+  };
+
+  const renderCardContent = (data: PresentPerfectItem[], title: string) => {
+    return (
+      <Card>
+        <h2>{title}</h2>
+        {longForm.map(renderItem)}
       </Card>
-    </div>
+    );
+  };
+
+  return (
+    <Wrapper>
+      <h3>Present Perfect Forms</h3>
+
+      <CardContainer>
+        {longForm && renderCardContent(longForm, "Long Form")}
+        {shortForm && renderCardContent(shortForm, "Short Form")}
+      </CardContainer>
+    </Wrapper>
   );
 };
 

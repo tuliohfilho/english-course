@@ -1,29 +1,26 @@
-import { useState, useEffect } from "react";
-
-import styles from "./IrregularVerbs.module.css";
-
-import { Title, Container } from "../../components/layout";
+import { useState, useEffect, BaseSyntheticEvent } from "react";
 
 import { getIrregularVerbs } from "../../api/irregularVerbs.api";
 
 import IrregularVerbs from "./IrregularVerbs";
 
 function Index() {
-  const [toPlay, setToPlay] = useState(false);
   const [irrVerbs, setIrrVerbs] = useState<Array<IrregularVerb>>([]);
   const [irrVerbsFiltered, setIrrVerbsFiltered] = useState<
     Array<IrregularVerb>
   >([]);
-  const [player, setPlayer] = useState<HTMLAudioElement>(new Audio());
 
-  const start = (url: any) => {
-    if (!toPlay) setPlayer(new Audio(url));
+  const filterVerbs = (e: BaseSyntheticEvent) => {
+    const str = e.target.value.toLowerCase();
+    const arr = irrVerbs.filter((verb) => {
+      const hasInPast = verb.past.toLowerCase().includes(str);
+      const hasInInfinitive = verb.infinitve.toLowerCase().includes(str);
+      const hasInPastParticiple = verb.pastParticiple
+        .toLowerCase()
+        .includes(str);
 
-    setToPlay(!toPlay);
-  };
-
-  const filterVerbs = (str: string) => {
-    const arr = irrVerbs.filter((verb) => verb.infinitve.includes(str));
+      return hasInPast || hasInInfinitive || hasInPastParticiple;
+    });
 
     setIrrVerbsFiltered(arr);
   };
@@ -35,38 +32,7 @@ function Index() {
     });
   }, []);
 
-  useEffect(() => {
-    if (toPlay) player.play();
-    else player.pause();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toPlay]);
-
-  return (
-    <Container customClass="column">
-      <Title
-        title="Irregular Verbs"
-        subTitle="Click the play button to listen to the audio"
-      />
-
-      <div className={styles.filter_container}>
-        <input
-          placeholder="Filter..."
-          type="text"
-          onChange={(e) => filterVerbs(e.target.value)}
-        />
-      </div>
-
-      <div className={styles.irregularVerbs_container}>
-        {irrVerbsFiltered &&
-          irrVerbsFiltered.map((irrVerb) => {
-            return (
-              <IrregularVerbs key={irrVerb.id} data={irrVerb} start={start} />
-            );
-          })}
-      </div>
-    </Container>
-  );
+  return <IrregularVerbs filterVerbs={filterVerbs} data={irrVerbsFiltered} />;
 }
 
 export default Index;

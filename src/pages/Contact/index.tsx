@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles";
 
-import { Title } from "../../components/layout";
+import { Title } from "../../components";
 
 function Contact() {
   return (
