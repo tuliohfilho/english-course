@@ -16,14 +16,18 @@ export const CardContainer = styled(Container).attrs({
     align-items: center;
     justify-content: center;
   }
-
-  p {
-    display: flex;
-  }
 `;
 
 export const CardContent = styled(Card)`
   width: 100%;
+`;
+
+export const List = styled.div`
+  display: flex;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 `;
 
 type PropsItem = {

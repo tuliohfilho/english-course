@@ -9,6 +9,7 @@ export const Wrapper = styled(Container).attrs({
 export const Content = styled.h1`
   color: #0a3161;
   margin-bottom: 0;
+  font-size: 2.5em;
 `;
 
 export const Subtitle = styled.p`

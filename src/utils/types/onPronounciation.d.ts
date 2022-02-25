@@ -4,7 +4,7 @@ declare type OnPronounciation = {
 };
 
 declare type OnPronounciationItem = {
-  id: string;
+  id: number;
   subject: string;
   auxiliaryVerb: string;
   pronounciation: string;

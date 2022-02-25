@@ -4,7 +4,7 @@ declare type PresentPerfect = {
 };
 
 declare type PresentPerfectItem = {
-  id: string;
+  id: number;
   verb: string;
   subject: string;
   auxiliaryVerb: string;

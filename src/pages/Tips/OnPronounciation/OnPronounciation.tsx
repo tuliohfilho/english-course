@@ -1,4 +1,4 @@
-import { Wrapper, CardContainer, CardContent, Item } from "./styles";
+import { Wrapper, CardContainer, CardContent, List, Item } from "./styles";
 
 import { Player } from "../../../components";
 
@@ -13,7 +13,7 @@ const OnPronounciation = ({ data }: Props) => {
     const { id, pronounciation, subject, auxiliaryVerb, audioName } = item;
 
     return (
-      <p key={id}>
+      <List key={id}>
         <Item maxWidth>
           <b>{auxiliaryVerb}</b>
         </Item>
@@ -22,7 +22,7 @@ const OnPronounciation = ({ data }: Props) => {
         <Item>=</Item>
         <Item maxWidth>{pronounciation}</Item>
         <Player context="onPronounciation" audioName={audioName} />
-      </p>
+      </List>
     );
   };
 
