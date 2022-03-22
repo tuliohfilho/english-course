@@ -18,6 +18,9 @@ const Navbar = () => {
           <Link to="/irregular_verbs">Irregular Verbs</Link>
         </Item>
         <Item>
+          <Link to="/pronouns">Pronouns</Link>
+        </Item>
+        <Item>
           <Link to="/tips">Tips</Link>
         </Item>
         <Item>

@@ -1,3 +1,9 @@
+declare type PronounType = {
+  id: number;
+  title: string;
+  description: string;
+};
+
 declare type Pronoun = {
   subjectPronoun: Array<PronounItem>;
   objectPronoun: Array<PronounItem>;
@@ -9,5 +15,5 @@ declare type Pronoun = {
 declare type PronounItem = {
   id: number;
   subject: string;
-  translation: string;
+  translations: Array<string>;
 };
