@@ -1,19 +1,9 @@
-import { useState, useEffect } from "react";
+import { useTips } from "../../../hooks/context";
 
 import PresentPerfect from "./PresentPerfect";
 
-import { getPresentPerfects } from "../../../api/presentPerfect.api";
-
 const Index = () => {
-  const [presentPerfect, setPresentPerfect] = useState<PresentPerfect>(
-    {} as PresentPerfect
-  );
-
-  useEffect(() => {
-    getPresentPerfects().then((data: PresentPerfect) => {
-      setPresentPerfect(data);
-    });
-  }, []);
+  const { presentPerfect } = useTips();
 
   return <PresentPerfect data={presentPerfect} />;
 };

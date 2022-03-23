@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react";
-
-import { getOnPronounciations } from "../../../api/onPronounciation.api";
+import { useTips } from "../../../hooks/context";
 
 import OnPronounciation from "./OnPronounciation";
 
 const Index = () => {
-  const [onPronounciation, setOnPronounciation] = useState<OnPronounciation>(
-    {} as OnPronounciation
-  );
-
-  useEffect(() => {
-    getOnPronounciations().then((data: OnPronounciation) => {
-      setOnPronounciation(data);
-    });
-  }, []);
+  const { onPronounciation } = useTips();
 
   return <OnPronounciation data={onPronounciation} />;
 };

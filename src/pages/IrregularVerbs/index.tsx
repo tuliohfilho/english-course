@@ -1,18 +1,19 @@
-import { useState, useEffect, BaseSyntheticEvent } from "react";
+import { useState, BaseSyntheticEvent, useEffect } from "react";
 
-import { getIrregularVerbs } from "../../api/irregularVerbs.api";
+import { useIrregularVerbs } from "../../hooks/context";
 
 import IrregularVerbs from "./IrregularVerbs";
 
 function Index() {
-  const [irrVerbs, setIrrVerbs] = useState<Array<IrregularVerb>>([]);
+  const { irregularVerbs } = useIrregularVerbs();
+
   const [irrVerbsFiltered, setIrrVerbsFiltered] = useState<
     Array<IrregularVerb>
   >([]);
 
   const filterVerbs = (e: BaseSyntheticEvent) => {
     const str = e.target.value.toLowerCase();
-    const arr = irrVerbs.filter((verb) => {
+    const arr = irregularVerbs.filter((verb) => {
       const hasInPast = verb.past.toLowerCase().includes(str);
       const hasInInfinitive = verb.infinitve.toLowerCase().includes(str);
       const hasInPastParticiple = verb.pastParticiple
@@ -26,11 +27,8 @@ function Index() {
   };
 
   useEffect(() => {
-    getIrregularVerbs().then((data) => {
-      setIrrVerbs(data);
-      setIrrVerbsFiltered(data);
-    });
-  }, []);
+    setIrrVerbsFiltered(irregularVerbs);
+  }, [irregularVerbs]);
 
   return <IrregularVerbs filterVerbs={filterVerbs} data={irrVerbsFiltered} />;
 }
