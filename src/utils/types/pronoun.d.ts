@@ -1,18 +1,18 @@
-declare type PronounType = {
+declare type PronounCategory = {
   id: number;
   title: string;
   description: string;
 };
 
-declare type Pronoun = {
-  subjectPronoun: Array<PronounItem>;
-  objectPronoun: Array<PronounItem>;
-  possessiveAdjective: Array<PronounItem>;
-  possessivePronoun: Array<PronounItem>;
-  reflexivePronoun: Array<PronounItem>;
+declare type PronounType = {
+  id: number;
+  categoryId: number;
+  title: string;
+  description: string;
+  pronouns: Array<Pronoun>;
 };
 
-declare type PronounItem = {
+declare type Pronoun = {
   id: number;
   subject: string;
   translations: Array<string>;

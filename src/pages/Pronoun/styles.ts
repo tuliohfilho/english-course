@@ -13,7 +13,7 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const CardPronoun = styled(Card)`
+export const CardCategory = styled(Card)`
   width: 28%;
   display: flex;
   flex-wrap: wrap;

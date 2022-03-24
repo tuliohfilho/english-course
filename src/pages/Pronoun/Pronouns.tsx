@@ -1,24 +1,25 @@
 import { BaseSyntheticEvent } from "react";
+import { Link } from "react-router-dom";
 import { Title } from "../../components";
 
 import {
   Wrapper,
   CardContainer,
-  CardPronoun,
+  CardCategory,
   CardTitle,
   CardContent,
 } from "./styles";
 
 type Props = {
-  data: Array<PronounType>;
-  setPronounType(type: PronounType): void;
+  data: Array<PronounCategory>;
+  setPronounCategory(type: PronounCategory): void;
 };
 
-const Pronouns = ({ data, setPronounType }: Props) => {
-  const setType = (e: BaseSyntheticEvent, type: PronounType) => {
+const Pronouns = ({ data, setPronounCategory }: Props) => {
+  const setType = (e: BaseSyntheticEvent, category: PronounCategory) => {
     e.preventDefault();
 
-    setPronounType(type);
+    setPronounCategory(category);
   };
 
   return (
@@ -29,19 +30,17 @@ const Pronouns = ({ data, setPronounType }: Props) => {
       />
       <CardContainer>
         {data.map((item) => (
-          <CardPronoun key={item.id}>
+          <CardCategory key={item.id}>
             <CardTitle>
               <h2>{item.title}</h2>
               <h4>{item.description}</h4>
             </CardTitle>
             <CardContent>
-              <span>
-                <a href="/" onClick={(e) => setType(e, item)}>
-                  Quer saber mais?
-                </a>
+              <span onClick={(e) => setType(e, item)}>
+                <Link to="/pronoun/details">Quer saber mais?</Link>
               </span>
             </CardContent>
-          </CardPronoun>
+          </CardCategory>
         ))}
       </CardContainer>
     </Wrapper>

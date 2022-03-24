@@ -1,7 +1,10 @@
+import { usePronouns } from "../../../hooks/context";
+
+import { Title } from "../../../components";
+
 import {
   Wrapper,
-  CardContainer,
-  CardPronoun,
+  CardType,
   CardTitle,
   CardContent,
   List,
@@ -9,22 +12,10 @@ import {
   ItemTranslation,
 } from "./styles";
 
-type Props = {
-  data: Pronoun;
-};
+const PronounDetails = () => {
+  const { pronounCategory, pronounsTypes } = usePronouns();
 
-const PronounDetails = ({ data }: Props) => {
-  const {
-    subjectPronoun,
-    objectPronoun,
-    possessiveAdjective,
-    possessivePronoun,
-    reflexivePronoun,
-  } = data;
-
-  const renderItem = (item: PronounItem) => {
-    const { id, subject, translations } = item;
-
+  const renderCardContent = ({ id, subject, translations }: Pronoun) => {
     return (
       <List key={id}>
         <ItemSubject>{subject}:</ItemSubject>
@@ -33,72 +24,28 @@ const PronounDetails = ({ data }: Props) => {
     );
   };
 
-  const renderCardContent = (
-    data: Array<PronounItem>,
-    title: string,
-    subtitle: string
-  ) => {
+  const renderCardType = ({ pronouns, title, description }: PronounType) => {
     return (
-      <CardPronoun>
+      <CardType>
         <CardTitle>
           <h2>{title}</h2>
-          <h4>{subtitle}</h4>
+          <h4>
+            {description && description.split(".").map((text) => <p>{text}</p>)}
+          </h4>
         </CardTitle>
-        <CardContent>{data.map(renderItem)}</CardContent>
-      </CardPronoun>
+        <CardContent>{pronouns && pronouns.map(renderCardContent)}</CardContent>
+      </CardType>
     );
   };
 
   return (
     <Wrapper>
-      <h3>
-        Os pronomes pessoais são termos que indicam pessoas, lugares e objetos.
-      </h3>
-      <CardContainer>
-        {subjectPronoun &&
-          renderCardContent(
-            subjectPronoun,
-            "Subject Pronoun",
-            "Pronomes pessoais do caso reto funcionam como sujeitos."
-          )}
-        {objectPronoun &&
-          renderCardContent(
-            objectPronoun,
-            "Object Pronoun",
-            "Pronomes pessoais do caso oblíquo funcionam como objetos."
-          )}
-      </CardContainer>
-      <h3>
-        Os pronomes possessivos em inglês, tal qual no português, indicam que
-        algo pertence a alguém ou alguma coisa.
-      </h3>
-      <CardContainer>
-        {possessiveAdjective &&
-          renderCardContent(
-            possessiveAdjective,
-            "Possessive Adjectve",
-            "Os pronomes adjetivos atribuírem a determinada palavra a qualidade de ser de algo ou alguém."
-          )}
-        {possessivePronoun &&
-          renderCardContent(
-            possessivePronoun,
-            "Possessive Pronoun",
-            "Os pronomes substantivos têm a função de substituir o substantivo"
-          )}
-      </CardContainer>
+      <Title
+        title={pronounCategory.title}
+        subTitle={pronounCategory.description}
+      />
 
-      <h3>
-        Os pronomes reflexivos são aqueles que aparecem após o verbo,
-        concordando sempre com o sujeito da oração
-      </h3>
-      <CardContainer>
-        {reflexivePronoun &&
-          renderCardContent(
-            reflexivePronoun,
-            "Reflexive Pronoun",
-            "Os pronomes reflexivos são aqueles que aparecem após o verbo, concordando sempre com o sujeito da oração"
-          )}
-      </CardContainer>
+      {pronounsTypes && pronounsTypes.map(renderCardType)}
     </Wrapper>
   );
 };
