@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Card } from "../../../components";
 import { Container } from "../../../components/layout";
@@ -52,13 +52,33 @@ export const List = styled.div`
   justify-content: flex-start;
 `;
 
-export const ItemSubject = styled.span`
+export type SizeType = "small" | "medium" | "large";
+type ItemSubjectProps = {
+  size?: SizeType;
+};
+export const ItemSubject = styled.span<ItemSubjectProps>`
   display: flex;
+  flex-wrap: wrap;
   min-width: 10%;
+  max-width: 10%;
   min-height: 2em;
   margin-right: 2em;
   color: #0a3161;
   font-weight: bold;
+
+  ${({ size }) =>
+    size?.includes("medium") &&
+    css`
+      min-width: 25%;
+      max-width: 25%;
+    `}
+
+  ${({ size }) =>
+    size?.includes("large") &&
+    css`
+      min-width: 50%;
+      max-width: 50%;
+    `}
 `;
 
 export const ItemTranslation = styled.span`

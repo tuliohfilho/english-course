@@ -45,9 +45,8 @@ const PronounsProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const { id } = pronounCategory;
-    console.log(id);
+
     getPronounsTypesByCategoryId(id).then((data: Array<PronounType>) => {
-      console.log(data);
       setPronounsTypes(data);
     });
   }, [pronounCategory]);
