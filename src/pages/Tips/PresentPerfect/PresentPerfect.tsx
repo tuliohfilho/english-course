@@ -1,17 +1,13 @@
-import { CardContainer, Wrapper } from "./styles";
+import { Wrapper, CardContainer, CardTitle } from "./styles";
 
 import { Card } from "../../../components";
 
 type Props = {
-  data: PresentPerfect;
+  data: Array<PresentPerfectType>;
 };
 
 const PresentPerfect = ({ data }: Props) => {
-  const { longForm, shortForm } = data;
-
-  const renderItem = (item: PresentPerfectItem) => {
-    const { id, verb, subject, auxiliaryVerb } = item;
-
+  const renderItem = ({ id, verb, subject, auxiliaryVerb }: PresentPerfect) => {
     return (
       <p key={id}>
         <span>{subject}</span>
@@ -21,11 +17,20 @@ const PresentPerfect = ({ data }: Props) => {
     );
   };
 
-  const renderCardContent = (data: PresentPerfectItem[], title: string) => {
+  const renderCardContent = ({
+    title,
+    description,
+    presentPerfects,
+  }: PresentPerfectType) => {
     return (
       <Card>
-        <h2>{title}</h2>
-        {longForm.map(renderItem)}
+        <CardTitle>
+          <h2>{title}</h2>
+          <h4>
+            {description && description.split(".").map((text) => <p>{text}</p>)}
+          </h4>
+        </CardTitle>
+        {presentPerfects && presentPerfects.map(renderItem)}
       </Card>
     );
   };
@@ -33,11 +38,7 @@ const PresentPerfect = ({ data }: Props) => {
   return (
     <Wrapper>
       <h3>Present Perfect Forms</h3>
-
-      <CardContainer>
-        {longForm && renderCardContent(longForm, "Long Form")}
-        {shortForm && renderCardContent(shortForm, "Short Form")}
-      </CardContainer>
+      <CardContainer>{data && data.map(renderCardContent)}</CardContainer>
     </Wrapper>
   );
 };

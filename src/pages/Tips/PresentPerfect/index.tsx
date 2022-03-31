@@ -3,9 +3,9 @@ import { useTips } from "../../../hooks/context";
 import PresentPerfect from "./PresentPerfect";
 
 const Index = () => {
-  const { presentPerfect } = useTips();
+  const { presentPerfectTypes } = useTips();
 
-  return <PresentPerfect data={presentPerfect} />;
+  return <PresentPerfect data={presentPerfectTypes} />;
 };
 
 export default Index;
