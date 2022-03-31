@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
+import { useApp } from "../../hooks/context";
 import { Wrapper } from "./styles";
 
 export enum contexts {
@@ -15,37 +16,35 @@ type Props = {
 };
 
 const Player = ({ audioName, context }: Props) => {
-  const [playing, setToPlay] = useState(false);
-  const [player, setPlayer] = useState<HTMLAudioElement>(new Audio());
-
-  const start = (url: any) => {
-    if (!playing) setPlayer(new Audio(url));
-
-    setToPlay(!playing);
-  };
+  const { player, playerName, setPlayerName } = useApp();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (playing) {
+    if (audioName !== playerName) {
+      setIsPlaying(false);
+    }
+  }, [audioName, playerName]);
+
+  const start = () => {
+    setPlayerName(audioName);
+
+    if (!isPlaying) {
+      player.src = require(`../../assets/audios/${context}/${audioName}`);
       player.play();
+      setIsPlaying(true);
     } else {
       player.pause();
-      setToPlay(false);
+      setIsPlaying(false);
     }
 
     player.onended = () => {
-      setToPlay(false);
+      setIsPlaying(false);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playing]);
-
-  const play = () => {
-    let audio = require(`../../assets/audios/${context}/${audioName}`);
-
-    start(audio);
   };
 
-  return <Wrapper onClick={play}>{playing ? <FaPause /> : <FaPlay />}</Wrapper>;
+  return (
+    <Wrapper onClick={start}>{isPlaying ? <FaPause /> : <FaPlay />}</Wrapper>
+  );
 };
 
 export default Player;
