@@ -1,15 +1,20 @@
-import { Wrapper, CardContainer, CardContent, List, Item } from "./styles";
+import {
+  Wrapper,
+  CardContainer,
+  CardTitle,
+  CardContent,
+  List,
+  Item,
+} from "./styles";
 
 import { Player } from "../../../components";
 
 type Props = {
-  data: OnPronounciation;
+  data: Array<OnPronounciationType>;
 };
 
 const OnPronounciation = ({ data }: Props) => {
-  const { simplePresenteTense, simplePastTense } = data;
-
-  const renderItem = (item: OnPronounciationItem) => {
+  const renderItem = (item: OnPronounciation) => {
     const { id, pronounciation, subject, auxiliaryVerb, audioName } = item;
 
     return (
@@ -26,11 +31,20 @@ const OnPronounciation = ({ data }: Props) => {
     );
   };
 
-  const renderCardContent = (data: OnPronounciationItem[], title: string) => {
+  const renderCardContent = ({
+    title,
+    description,
+    onPronounciations,
+  }: OnPronounciationType) => {
     return (
       <CardContent>
-        <h2>{title}</h2>
-        {data.map(renderItem)}
+        <CardTitle>
+          <h2>{title}</h2>
+          <h4>
+            {description && description.split(".").map((text) => <p>{text}</p>)}
+          </h4>
+        </CardTitle>
+        {onPronounciations && onPronounciations.map(renderItem)}
       </CardContent>
     );
   };
@@ -39,10 +53,7 @@ const OnPronounciation = ({ data }: Props) => {
     <Wrapper>
       <h3>On Pronounciation</h3>
       <CardContainer>
-        {simplePresenteTense &&
-          renderCardContent(simplePresenteTense, "Simple Present Tense")}
-        {simplePastTense &&
-          renderCardContent(simplePastTense, "Simple Past Tense")}
+        <CardContainer>{data && data.map(renderCardContent)}</CardContainer>
       </CardContainer>
     </Wrapper>
   );

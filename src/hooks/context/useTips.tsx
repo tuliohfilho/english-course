@@ -6,12 +6,12 @@ import {
   useState,
 } from "react";
 
-import { getPresentPerfects } from "../../api/presentPerfect.api";
-import { getOnPronounciations } from "../../api/onPronounciation.api";
+import { getPresentPerfectTypes } from "../../api/presentPerfect.api";
+import { getAllOnPronounciationTypes } from "../../api/onPronounciation.api";
 
 interface initialContext {
-  presentPerfect: PresentPerfect;
-  onPronounciation: OnPronounciation;
+  presentPerfectTypes: Array<PresentPerfectType>;
+  onPronounciationTypes: Array<OnPronounciationType>;
 }
 
 const Context = createContext<initialContext>({} as initialContext);
@@ -23,26 +23,26 @@ const useTips = () => {
 };
 
 const TipsProvider = ({ children }: { children: ReactNode }) => {
-  const [presentPerfect, setPresentPerfect] = useState<PresentPerfect>(
-    {} as PresentPerfect
-  );
-  const [onPronounciation, setOnPronounciation] = useState<OnPronounciation>(
-    {} as OnPronounciation
-  );
+  const [presentPerfectTypes, setPresentPerfectTypes] = useState<
+    Array<PresentPerfectType>
+  >([]);
+  const [onPronounciationTypes, setOnPronounciationTypes] = useState<
+    Array<OnPronounciationType>
+  >([]);
 
   useEffect(() => {
-    getPresentPerfects().then((data: PresentPerfect) => {
-      setPresentPerfect(data);
+    getPresentPerfectTypes().then((data: Array<PresentPerfectType>) => {
+      setPresentPerfectTypes(data);
     });
   }, []);
 
   useEffect(() => {
-    getOnPronounciations().then((data: OnPronounciation) => {
-      setOnPronounciation(data);
+    getAllOnPronounciationTypes().then((data: Array<OnPronounciationType>) => {
+      setOnPronounciationTypes(data);
     });
   }, []);
 
-  const value = { presentPerfect, onPronounciation };
+  const value = { presentPerfectTypes, onPronounciationTypes };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

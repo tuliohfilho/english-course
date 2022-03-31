@@ -1,12 +1,15 @@
-declare type OnPronounciation = {
-  simplePastTense: Array<OnPronounciationItem>;
-  simplePresenteTense: Array<OnPronounciationItem>;
+declare type OnPronounciationType = {
+  id: number;
+  title: string;
+  description: string;
+  onPronounciations?: Array<OnPronounciation>;
 };
 
-declare type OnPronounciationItem = {
+declare type OnPronounciation = {
   id: number;
+  typeId: number;
   subject: string;
+  audioName: string;
   auxiliaryVerb: string;
   pronounciation: string;
-  audioName: string;
 };

@@ -3,9 +3,9 @@ import { useTips } from "../../../hooks/context";
 import OnPronounciation from "./OnPronounciation";
 
 const Index = () => {
-  const { onPronounciation } = useTips();
+  const { onPronounciationTypes } = useTips();
 
-  return <OnPronounciation data={onPronounciation} />;
+  return <OnPronounciation data={onPronounciationTypes} />;
 };
 
 export default Index;

@@ -18,6 +18,29 @@ export const CardContainer = styled(Container).attrs({
   }
 `;
 
+export const CardTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    display: flex;
+    color: #0a3161;
+    margin-block-end: 0;
+  }
+
+  h4 {
+    display: flex;
+    color: #b31942;
+    margin-block-start: 0;
+    flex-direction: column;
+  }
+
+  p {
+    margin-block-end: 0;
+    margin-block-start: 0.5em;
+  }
+`;
+
 export const CardContent = styled(Card)`
   width: 100%;
 `;
